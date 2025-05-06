@@ -46,11 +46,24 @@ def main():
     parser = argparse.ArgumentParser(description="Search files in a specific directory and output their contents.")
     parser.add_argument("time_range", nargs="?", help="Time range to filter files (e.g., '1d', '7d', '1w')", type=parse_time_range)
     parser.add_argument("--metadata", action="store_true", help="Include metadata with file dates")
+    parser.add_argument("--path", action="store_true", help="Output the fully qualified path to the directory")
+    parser.add_argument("ls", nargs="?", const=True, help="List all files in the directory")
     args = parser.parse_args()
     
     # Set up directory path
     home = os.path.expanduser("~")
     directory = os.path.join(home, "Library", "Mobile Documents", "iCloud~com~deanputney~Stardate", "Documents", "Transcriptions")
+    
+    # Handle --path flag
+    if args.path:
+        print(directory)
+        return
+    
+    # Handle 'ls' argument
+    if args.ls:
+        for filename in os.listdir(directory):
+            print(os.path.join(directory, filename))
+        return
     
     # Handle time range
     if args.time_range:
