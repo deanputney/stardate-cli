@@ -48,19 +48,24 @@ def main():
     parser.add_argument("time_range", nargs="?", help="Time range to filter files (e.g., '1d', '7d', '1w')", type=parse_time_range)
     parser.add_argument("--metadata", action="store_true", help="Include metadata with file dates")
     parser.add_argument("--path", action="store_true", help="Output the fully qualified path to the directory")
-    parser.add_argument("ls", nargs="?", const=True, help="List all files in the directory")
+    parser.add_argument("--ls", action="store_true", help="List all files in the directory")
     args = parser.parse_args()
     
     # Set up directory path
     home = os.path.expanduser("~")
     directory = os.path.join(home, "Library", "Mobile Documents", "iCloud~com~deanputney~Stardate", "Documents", "Transcriptions")
     
+    # Check if directory exists
+    if not os.path.exists(directory):
+        print(f"Error: Directory not found: {directory}", file=sys.stderr)
+        sys.exit(1)
+    
     # Handle --path flag
     if args.path:
         print(directory)
         return
     
-    # Handle 'ls' argument
+    # Handle --ls argument
     if args.ls:
         for filename in os.listdir(directory):
             print(os.path.join(directory, filename))
