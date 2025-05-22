@@ -2,7 +2,7 @@ class Stardate < Formula
   desc "Command line interface for interacting with Stardate app's transcription files"
   homepage "https://github.com/deanputney/stardate-cli"
   url "https://github.com/deanputney/stardate-cli/releases/download/v0.0.1/stardate-0.0.1.tar.gz"
-  sha256 "0986c59232618580a6dec54b035bccdac1521c72000771d9707499f3e0e5c943"
+  sha256 "929e8f522e3c88297e0f7bd98d185788dc150095d8a67fb43c9ada60a1112c47"
 
   depends_on "python@3.10"
 
