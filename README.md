@@ -11,7 +11,7 @@ There should also be arguments to handle including metadata in the output. For e
 You can install stardate-cli using Homebrew:
 
 ```bash
-brew tap deanputney/stardate
+brew tap deanputney/stardate-cli
 brew install stardate
 ```
 
